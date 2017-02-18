@@ -9,3 +9,4 @@ backup lại
 
 update file trên git
 7. git pull
+8. git stash save --keep-index ===> ERROR<Your local changes to the following files would be overwritten by merge>
