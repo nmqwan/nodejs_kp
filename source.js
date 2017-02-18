@@ -301,11 +301,9 @@ let data = `<rss xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2
   </channel>
   </rss>`;
 
-function Tin(title, desc, link, img){
+function Tin(title, desc){
   this.title= title;
   this.desc=desc;
-  this.link=link;
-  this.img=img;
 }
 
 let resultArr=[];
@@ -313,26 +311,26 @@ let stringItem=(src,sStart,sEnd,status)=>{
   let first=src.indexOf(sStart)+sStart.length;
   let last= src.indexOf(sEnd);
   let resultString;
-  // console.log(sStart.length);
   if (last!=-1) {
     resultString =src.substring(first,last);
-    // console.log(resultString);
     if (status==1) {
       resultArr.push(resultString);
       src=src.substring(last+sEnd.length,src.length);
       stringItem(src,sStart,sEnd,1);
     }
-    return resultString;
   }
+  return resultString;
 }
 
 
 stringItem(data,"<item>","</item>",1);
-console.log(resultArr.length);
 
+let result=[];
 resultArr.forEach((e,i)=>{
   let title = stringItem(e,"<title>","</title>",0).trim();
   let descTMP  = stringItem(e,"<description>","</description>",0).trim();
-  let desc = stringItem(descTMP,"</br>","]]>",0);
-  console.log(desc);
+  let desc = stringItem(descTMP,"</br>","]]>",0).trim();
+  let tmp= new Tin(title,desc);
+  result.push(tmp);
 });
+console.log(JSON.stringify(result));
