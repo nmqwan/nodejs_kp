@@ -2,3 +2,10 @@
 2.  git add *
 3. git commit -m"<message>"
 4. git push
+
+backup lại
+5.git log   ->copy id ->ctrl+c quit
+6.git revert <id>  -> :q ->quit
+
+update file trên git
+7. git pull
