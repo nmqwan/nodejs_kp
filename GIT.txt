@@ -1,8 +1,4 @@
-﻿1. git clone <URL>
+1. git clone <URL>
 2.  git add *
 3. git commit -m"<message>"
 4. git push
-
-backup lại
-5.git log   ->copy id ->ctrl+c quit
-6.git revert <id>  -> :q ->quit
